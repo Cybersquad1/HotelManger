@@ -1,0 +1,13 @@
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelManger.exe.config
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelManger.exe
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelManger.pdb
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelDBA.dll
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelDBA.pdb
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelUI.csprojResolveAssemblyReference.cache
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.MainForm.resources
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.Properties.Resources.resources
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelUI.csproj.GenerateResource.Cache
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.exe
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.pdb
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelModels.dll
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelModels.pdb
