@@ -81,23 +81,23 @@ namespace HotelManger
             //MessageBox.Show("ID:" + Convert.ToString(node.StatusID) + " Name:" + node.StatusName);
 
 
-            MessageBox.Show(Convert.ToString(CustDegreeService.AddNewCustStatus("像样会员", 0.90, 0, 3000, true, true)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 1)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 2)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 3)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 4)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 5)));
-            ShowIt();
-            MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 6)));
-            ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.AddNewCustStatus("像样会员", 0.90, 0, 3000, true, true)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 1)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 2)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 3)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 4)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 5)));
+            //ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 6)));
+            //ShowIt();
 
-            MessageBox.Show(Convert.ToString(CustDegreeService.DeleteTypeFromID(4)));
-            ShowIt();
+            //MessageBox.Show(Convert.ToString(CustDegreeService.DeleteTypeFromID(4)));
+            //ShowIt();
         }
 
         private void ShowIt()
