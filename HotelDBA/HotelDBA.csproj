@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustDegreeService.cs" />
     <Compile Include="CustStatusService.cs" />
     <Compile Include="LogStatusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
