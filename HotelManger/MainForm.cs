@@ -24,20 +24,20 @@ namespace HotelManger
         {
 
             //通过ID查询
-            //CustDegree i = CustDegreeService.FindCustDegreeByID(Convert.ToInt32(textBox1.Text));
+            ModelType i = ModelTypeService.FindModelTypeByID(Convert.ToInt32(textBox1.Text));
 
-            //MessageBox.Show("ID:" + Convert.ToString(i.DegreeID) + " Name:" + i.DegreeName + " RoomDiscount:" + i.RoomDiscount + " PledgeCashDisCount:" + Convert.ToString(i.PledgeCashDisCount) + " TotalMoneyLimit:" + Convert.ToString(i.TotalMoneyLimit) + " RoomCheck:" + Convert.ToString(i.RoomCheck) + " FreeBreakfast:" + Convert.ToString(i.FreeBreakfast));
+            MessageBox.Show("ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName);
 
             //获取所有对象
-            //List<CustDegree> list;
+            //List<ModelType> list;
 
-            //list = CustDegreeService.GetAllCustStatus();
+            //list = ModelTypeService.FindModelTypeListByKeyword(textBox1.Text, true);
 
             //string str = "";
 
-            //foreach (CustDegree i in list)
+            //foreach (ModelType i in list)
             //{
-            //    str += "ID:" + Convert.ToString(i.DegreeID) + " Name:" + i.DegreeName + " RoomDiscount:" + i.RoomDiscount + " PledgeCashDisCount:" + Convert.ToString(i.PledgeCashDisCount) + " TotalMoneyLimit:" + Convert.ToString(i.TotalMoneyLimit) + " RoomCheck:" + Convert.ToString(i.RoomCheck) + " FreeBreakfast:" + Convert.ToString(i.FreeBreakfast) + "\r\n";
+            //    str += "ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName + "\r\n";
             //}
 
             //MessageBox.Show(str);
@@ -98,13 +98,13 @@ namespace HotelManger
 
             //MessageBox.Show(Convert.ToString(CustDegreeService.DeleteTypeFromID(4)));
             //ShowIt();
+
+            //AuthPrivilege list = AuthPrivilegeService.FindCustDegreeByID(Convert.ToInt32(textBox1.Text));
+
+            //MessageBox.Show(Convert.ToString(OperEventService.DeleteStatusName(6)));
+            //OperEvent list = OperEventService.FindOperEventListByID(6);
+            //MessageBox.Show("ID:" + Convert.ToString(list.EventID));
         }
 
-        private void ShowIt()
-        {
-            CustDegree i = CustDegreeService.FindCustDegreeByID(4);
-
-            MessageBox.Show("ID:" + Convert.ToString(i.DegreeID) + " Name:" + i.DegreeName + " RoomDiscount:" + i.RoomDiscount + " PledgeCashDisCount:" + Convert.ToString(i.PledgeCashDisCount) + " TotalMoneyLimit:" + Convert.ToString(i.TotalMoneyLimit) + " RoomCheck:" + Convert.ToString(i.RoomCheck) + " FreeBreakfast:" + Convert.ToString(i.FreeBreakfast));
-        }
     }
 }

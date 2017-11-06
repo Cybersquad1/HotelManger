@@ -144,7 +144,7 @@ namespace HotelDBA
         /// <param name="total">最低消费要求</param>
         /// <param name="Check">是否享受“免查房”权益</param>
         /// <param name="Free">是否享受“提供免费早餐”权益</param>
-        /// <returns>返回1为添加成功，0为检查出重复拒绝添加，返回-100为异常</returns>
+        /// <returns>返回1为添加成功，-1为检查出重复拒绝添加，返回-100为异常</returns>
         public static int AddNewCustStatus(string statusname,double disrate,int cash,int total,bool Check,bool Free)
         {
             string sqlstr = "if not exists (select DegreeName from CustDegree where DegreeName= @newname )" +

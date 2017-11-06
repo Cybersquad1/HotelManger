@@ -124,7 +124,7 @@ namespace HotelDBA
         /// 插入新的房间状态类型
         /// </summary>
         /// <param name="statusname">新名称</param>
-        /// <returns>返回1为插入成功，-100为异常</returns>
+        /// <returns>返回1为插入成功，-1为出现重复拒绝插入，-100为异常</returns>
         public static int AddNewStatus(string statusname)
         {
             string sqlstr = "if not exists (select RoomStatusName from RoomStatus where RoomStatusName= @newname )" +

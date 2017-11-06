@@ -24,6 +24,22 @@ namespace HotelModels
         /// </summary>
         public int AuthDegree { get; set; }
         /// <summary>
+        /// 添加新的房间的权限
+        /// </summary>
+        public int AddNewRoom { get; set; }
+        /// <summary>
+        /// 读取房间列表的权限
+        /// </summary>
+        public int ReadRoom { get; set; }
+        /// <summary>
+        /// 修改房间信息的权限
+        /// </summary>
+        public int ChangeRoom { get; set; }
+        /// <summary>
+        /// 删除房间信息的权限
+        /// </summary>
+        public int DeleteRoom { get; set; }
+        /// <summary>
         /// 读取房间状态的权限
         /// </summary>
         public int ReadRoomStatus { get; set; }
@@ -38,11 +54,15 @@ namespace HotelModels
         /// <summary>
         /// 修改房间状态的权限(入房退房等)
         /// </summary>
-        public int ChangeRoomCheck { get; set; }
+        public int ChangeRoomStatus { get; set; }
         /// <summary>
         /// 修改入住日志的权限
         /// </summary>
         public int ChangeCheckLog { get; set; }
+        /// <summary>
+        /// 添加客户资料的权限
+        /// </summary>
+        public int AddNewCust { get; set; }
         /// <summary>
         /// 修改客户资料的权限
         /// </summary>

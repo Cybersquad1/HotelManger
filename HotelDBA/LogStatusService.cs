@@ -124,7 +124,7 @@ namespace HotelDBA
         /// 增加新的日志状态类型
         /// </summary>
         /// <param name="statusname">新增名</param>
-        /// <returns>如果返回0为插入失败，返回1为插入成功</returns>
+        /// <returns>如果返回-1为插入失败，返回1为插入成功</returns>
         public static int AddNewLogStatus(string statusname)
         {
             string sqlstr = "if not exists (select StatusName from LogStatus where StatusName= @newname )" +

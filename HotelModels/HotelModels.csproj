@@ -45,12 +45,17 @@
     <Compile Include="Customer.cs" />
     <Compile Include="CustStatus.cs" />
     <Compile Include="LogStatus.cs" />
+    <Compile Include="ModelType.cs" />
     <Compile Include="OperationLog.cs" />
     <Compile Include="OperatorList.cs" />
+    <Compile Include="OperEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomStatus.cs" />
     <Compile Include="RoomType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
