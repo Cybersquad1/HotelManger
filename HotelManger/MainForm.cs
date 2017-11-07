@@ -105,12 +105,17 @@ namespace HotelManger
             //OperEvent list = OperEventService.FindOperEventListByID(6);
             //MessageBox.Show("ID:" + Convert.ToString(list.EventID));
 
-            List<OperationLog> list = OperationLogService.FindOperationLogListByKeyword(textBox1.Text, true);
+            //List<OperationLog> list = OperationLogService.FindOperationLogListByKeyword(textBox1.Text, true);
 
-            for (int i = 0; i < list.Count; i++)
-            {
-                MessageBox.Show(list[i].LogID.ToString() + " " + list[i].OperModel.ToString() + " " + list[i].OperEvent.ToString() + " " + list[i].OperatorID.ToString() + " " + list[i].OperDescription + " " + list[i].OperTime.ToString());
-            }
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    MessageBox.Show(list[i].LogID.ToString() + " " + list[i].OperModel.ToString() + " " + list[i].OperEvent.ToString() + " " + list[i].OperatorID.ToString() + " " + list[i].OperDescription + " " + list[i].OperTime.ToString());
+            //}
+
+            MessageBox.Show(OperationLogService.DeleteOperationLog(3).ToString());
+
+            OperationLog list = OperationLogService.FindOperationLogByID(3);
+            MessageBox.Show(list.LogID.ToString());
         }
 
     }
