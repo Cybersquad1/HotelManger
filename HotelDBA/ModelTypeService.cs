@@ -119,6 +119,62 @@ namespace HotelDBA
             return node;
         }
 
+        /// <summary>
+        /// 添加新的模块类型对象，如果检测到重复不会进行添加
+        /// </summary>
+        /// <param name="eventname">需要添加的名字</param>
+        /// <returns>返回1为添加成功，-1为检测到重复拒绝添加，-100为异常</returns>
+        public static int AddNewModelType(string eventname)
+        {
+            string sqlstr = "if not exists (select ModelName from ModelType where ModelName= @newname )" +
+    " insert into ModelType (ModelName) VALUES (@newname)";
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@newname",SqlDbType.VarChar)
+            };
 
+            para[0].Value = eventname;
+
+            return SqlHelper.ExecuteNonQuery(sqlstr, para);
+        }
+
+        /// <summary>
+        /// 修改模块类型的名称
+        /// </summary>
+        /// <param name="newname">需要修改的新名称</param>
+        /// <param name="ID">需要修改项目对应的ID</param>
+        /// <returns>返回1为修改成功，0为未找到，-100为异常</returns>
+        public static int ChangeModelTypeName(string newname, int ID)
+        {
+            string sqlstr = "update ModelType SET ModelName = @name where ModelID = @ID";
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@name",SqlDbType.VarChar),
+                new SqlParameter("@ID",SqlDbType.Int)
+            };
+
+            para[0].Value = newname;
+            para[1].Value = ID;
+
+            return SqlHelper.ExecuteNonQuery(sqlstr, para);
+        }
+
+        /// <summary>
+        /// 删除指定的模块类型
+        /// </summary>
+        /// <param name="EventID">需要删除的模块类型ID</param>
+        /// <returns>返回1为成功删除，0为找不到删除的项目，-100为异常</returns>
+        public static int DeleteTypeName(int EventID)
+        {
+            string sqlstr = "delete from ModelType where ModelID = @index";
+
+            SqlParameter[] para = new SqlParameter[]{
+                new SqlParameter("@index",SqlDbType.Int)
+            };
+
+            para[0].Value = EventID;
+
+            return SqlHelper.ExecuteNonQuery(sqlstr, para);
+        }
     }
 }

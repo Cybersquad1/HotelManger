@@ -24,9 +24,9 @@ namespace HotelManger
         {
 
             //通过ID查询
-            ModelType i = ModelTypeService.FindModelTypeByID(Convert.ToInt32(textBox1.Text));
+            //ModelType i = ModelTypeService.FindModelTypeByID(Convert.ToInt32(textBox1.Text));
 
-            MessageBox.Show("ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName);
+            //MessageBox.Show("ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName);
 
             //获取所有对象
             //List<ModelType> list;
@@ -104,6 +104,13 @@ namespace HotelManger
             //MessageBox.Show(Convert.ToString(OperEventService.DeleteStatusName(6)));
             //OperEvent list = OperEventService.FindOperEventListByID(6);
             //MessageBox.Show("ID:" + Convert.ToString(list.EventID));
+
+            List<OperationLog> list = OperationLogService.FindOperationLogListByKeyword(textBox1.Text, true);
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                MessageBox.Show(list[i].LogID.ToString() + " " + list[i].OperModel.ToString() + " " + list[i].OperEvent.ToString() + " " + list[i].OperatorID.ToString() + " " + list[i].OperDescription + " " + list[i].OperTime.ToString());
+            }
         }
 
     }

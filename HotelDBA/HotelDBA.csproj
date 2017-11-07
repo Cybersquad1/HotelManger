@@ -46,6 +46,7 @@
     <Compile Include="CustStatusService.cs" />
     <Compile Include="LogStatusService.cs" />
     <Compile Include="ModelTypeService.cs" />
+    <Compile Include="OperationLogService.cs" />
     <Compile Include="OperEventService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomService.cs" />

@@ -143,7 +143,7 @@ namespace HotelDBA
         /// </summary>
         /// <param name="newname">新名称</param>
         /// <param name="ID">需要修改的ID</param>
-        /// <returns></returns>
+        /// <returns>返回1为修改成功，0为未找到，-100为异常</returns>
         public static int ChangeOperEventName(string newname, int ID)
         {
             string sqlstr = "update OperEvent SET EventName = @name where EventID = @ID";
