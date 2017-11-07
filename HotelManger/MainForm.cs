@@ -112,10 +112,20 @@ namespace HotelManger
             //    MessageBox.Show(list[i].LogID.ToString() + " " + list[i].OperModel.ToString() + " " + list[i].OperEvent.ToString() + " " + list[i].OperatorID.ToString() + " " + list[i].OperDescription + " " + list[i].OperTime.ToString());
             //}
 
-            MessageBox.Show(OperationLogService.DeleteOperationLog(3).ToString());
+            OperatorListService.AddNewOperator("张全蛋", 2, 0, "MrZhang", "NoPsw", true);
 
-            OperationLog list = OperationLogService.FindOperationLogByID(3);
-            MessageBox.Show(list.LogID.ToString());
+            OperatorList list = OperatorListService.FindOperatorByID(1, "张全蛋", "dellbeat", 2);
+
+            MessageBox.Show(list.OperID.ToString() + " " + list.OperName+ " " + list.AuthDegree.ToString() + " " + list.LogInCount.ToString() + " " + list.LoginAccount + " " + list.Enable.ToString());
+
+            MessageBox.Show(OperatorListService.ChangeOperator(2, "李全蛋", 2, 0, "MrZhang", "NoPsw", true, 1).ToString());
+            list = OperatorListService.FindOperatorByID(1, "李全蛋", "dellbeat", 2);
+            MessageBox.Show(list.OperID.ToString() + " " + list.OperName + " " + list.AuthDegree.ToString() + " " + list.LogInCount.ToString() + " " + list.LoginAccount + " " + list.Enable.ToString());
+            MessageBox.Show(OperatorListService.DeleteOperator(2).ToString());
+
+            list = OperatorListService.FindOperatorByID(2, "李全蛋", "dellbeat", 1);
+
+            MessageBox.Show(list.OperID.ToString());
         }
 
     }
