@@ -35,7 +35,7 @@ namespace HotelModels
         /// <summary>
         /// 入住日志序号列表
         /// </summary>
-        public List<int> CheckInLogIndex { get; set; }
+        public string CheckInLogIndex { get; set; }
         /// <summary>
         /// 顾客状态
         /// </summary>

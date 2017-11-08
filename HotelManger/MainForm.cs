@@ -29,15 +29,15 @@ namespace HotelManger
             //MessageBox.Show("ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName);
 
             //获取所有对象
-            //List<ModelType> list;
+            //List<Room> list;
 
-            //list = ModelTypeService.FindModelTypeListByKeyword(textBox1.Text, true);
+            //list = RoomService.GetRoomList();
 
             //string str = "";
 
-            //foreach (ModelType i in list)
+            //foreach (Room i in list)
             //{
-            //    str += "ID:" + Convert.ToString(i.ModelID) + " Name:" + i.ModelName + "\r\n";
+            //    str += i.RoomID.ToString() + " " + i.RoomNumber + " " + i.RoomTypeID + " " + i.RoomStatus + " " + i.Description + " " + i.NumOfBeds.ToString() + " " + i.NumOfCust.ToString() + "\r\n";
             //}
 
             //MessageBox.Show(str);
@@ -80,52 +80,18 @@ namespace HotelManger
 
             //MessageBox.Show("ID:" + Convert.ToString(node.StatusID) + " Name:" + node.StatusName);
 
+            //MessageBox.Show(CheckInLogService.AddNewCheckInLog(1, 1, Convert.ToDateTime("2017-1-1 10:00:00"), Convert.ToDateTime("2017-2-1 10:00:00"), 200, 80, 500, 1).ToString());
 
-            //MessageBox.Show(Convert.ToString(CustDegreeService.AddNewCustStatus("像样会员", 0.90, 0, 3000, true, true)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 1)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 2)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 3)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 4)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 5)));
-            //ShowIt();
-            //MessageBox.Show(Convert.ToString(CustDegreeService.ChangeStatusName(4, "像样会员", 0.93, 0, 9999, true, true, 6)));
-            //ShowIt();
 
-            //MessageBox.Show(Convert.ToString(CustDegreeService.DeleteTypeFromID(4)));
-            //ShowIt();
 
-            //AuthPrivilege list = AuthPrivilegeService.FindCustDegreeByID(Convert.ToInt32(textBox1.Text));
+            MessageBox.Show(CheckInLogService.DeleteCheckInLog(8).ToString());
 
-            //MessageBox.Show(Convert.ToString(OperEventService.DeleteStatusName(6)));
-            //OperEvent list = OperEventService.FindOperEventListByID(6);
-            //MessageBox.Show("ID:" + Convert.ToString(list.EventID));
+                List<CheckInLog> list = CheckInLogService.GetCheckInLogByIDorCust(8, Convert.ToInt32(textBox1.Text), 1);
 
-            //List<OperationLog> list = OperationLogService.FindOperationLogListByKeyword(textBox1.Text, true);
-
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    MessageBox.Show(list[i].LogID.ToString() + " " + list[i].OperModel.ToString() + " " + list[i].OperEvent.ToString() + " " + list[i].OperatorID.ToString() + " " + list[i].OperDescription + " " + list[i].OperTime.ToString());
-            //}
-
-            OperatorListService.AddNewOperator("张全蛋", 2, 0, "MrZhang", "NoPsw", true);
-
-            OperatorList list = OperatorListService.FindOperatorByID(1, "张全蛋", "dellbeat", 2);
-
-            MessageBox.Show(list.OperID.ToString() + " " + list.OperName+ " " + list.AuthDegree.ToString() + " " + list.LogInCount.ToString() + " " + list.LoginAccount + " " + list.Enable.ToString());
-
-            MessageBox.Show(OperatorListService.ChangeOperator(2, "李全蛋", 2, 0, "MrZhang", "NoPsw", true, 1).ToString());
-            list = OperatorListService.FindOperatorByID(1, "李全蛋", "dellbeat", 2);
-            MessageBox.Show(list.OperID.ToString() + " " + list.OperName + " " + list.AuthDegree.ToString() + " " + list.LogInCount.ToString() + " " + list.LoginAccount + " " + list.Enable.ToString());
-            MessageBox.Show(OperatorListService.DeleteOperator(2).ToString());
-
-            list = OperatorListService.FindOperatorByID(2, "李全蛋", "dellbeat", 1);
-
-            MessageBox.Show(list.OperID.ToString());
+            for (int i = 0; i < list.Count; i++)
+            {
+                MessageBox.Show(list[i].CheckInID.ToString() + " " + list[i].CustomerID.ToString() + " " + list[i].RoomID.ToString() + " " + list[i].CheckInDate.ToString() + " " + list[i].CheckOutDate.ToString() + " FinalDate:" + list[i].FinalOutDate.ToString() + " " + list[i].PledgeCash.ToString() + " " + list[i].RoomPrice.ToString() + " " + list[i].ReceiveMoney.ToString() + " " + list[i].FinalPrice.ToString() + " " + list[i].ReturnMoney.ToString() + " " + list[i].StatusID.ToString());
+            }
         }
 
     }

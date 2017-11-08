@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthPrivilegeService.cs" />
+    <Compile Include="CheckInLogService.cs" />
     <Compile Include="CustDegreeService.cs" />
+    <Compile Include="CustomerService.cs" />
     <Compile Include="CustStatusService.cs" />
     <Compile Include="LogStatusService.cs" />
     <Compile Include="ModelTypeService.cs" />

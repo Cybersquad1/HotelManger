@@ -31,7 +31,7 @@ namespace HotelModels
         /// <summary>
         /// 实际退房时间
         /// </summary>
-        public DateTime FinalOutDate { get; set; }
+        public Nullable<DateTime> FinalOutDate { get; set; }
         /// <summary>
         /// 支付押金
         /// </summary>
