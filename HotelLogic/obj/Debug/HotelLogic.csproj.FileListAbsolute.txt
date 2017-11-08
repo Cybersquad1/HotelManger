@@ -1,0 +1,9 @@
+J:\homework\HotelManger\HotelManger\HotelLogic\obj\Debug\HotelLogic.csprojResolveAssemblyReference.cache
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelLogic.dll
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelLogic.pdb
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelDBA.dll
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelModels.dll
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelDBA.pdb
+J:\homework\HotelManger\HotelManger\HotelLogic\bin\Debug\HotelModels.pdb
+J:\homework\HotelManger\HotelManger\HotelLogic\obj\Debug\HotelLogic.dll
+J:\homework\HotelManger\HotelManger\HotelLogic\obj\Debug\HotelLogic.pdb

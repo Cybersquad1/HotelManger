@@ -41,6 +41,38 @@ namespace HotelDBA
             return list;
         }
 
+        public static List<Room> GetRoomListByType(int RoomTypeID)
+        {
+            List<Room> list = new List<Room>();
+
+            string sqlstr = "select RoomID,RoomNumber,RoomTypeID,RoomStatus,Description,NumOfBeds,NumOfCust from Room where RoomTypeID = @index";
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@index",SqlDbType.Int)
+            };
+
+            para[0].Value = RoomTypeID;
+            
+            SqlDataReader reader = SqlHelper.ExecuteReader(sqlstr,para);
+
+            while (reader.Read())
+            {
+                Room node = new Room();
+                node.RoomID = Convert.ToInt32(reader[0]);
+                node.RoomNumber = reader[1].ToString();
+                node.RoomTypeID = Convert.ToInt32(reader[2]);
+                node.RoomStatus = Convert.ToInt32(reader[3]);
+                node.Description = reader[4].ToString();
+                node.NumOfBeds = Convert.ToInt32(reader[5]);
+                node.NumOfCust = Convert.ToInt32(reader[6]);
+                list.Add(node);
+            }
+
+            reader.Close();
+
+            return list;
+        }
+
         /// <summary>
         /// 通过房间ID或者房间号查找房间
         /// </summary>
@@ -48,7 +80,7 @@ namespace HotelDBA
         /// <param name="RoomNumber">需要查找的房间号</param>
         /// <param name="type">1为按ID查找，2为按房间号查找</param>
         /// <returns>如果返回的roomid为-1则为查找失败，其他情况为查找成功</returns>
-        public static Room FindRoomByIDorName(int ID, string RoomNumber, int type)
+        public static Room FindRoomByIDorName(int ID, string RoomNumber ,int type)
         {
             Room node = new Room();
             node.RoomID = -1;

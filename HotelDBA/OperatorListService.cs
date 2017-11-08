@@ -138,17 +138,17 @@ namespace HotelDBA
         }
 
         /// <summary>
-        /// 修改用户信息
+        /// 修改操作者信息
         /// </summary>
-        /// <param name="ID">需要修改的用户ID</param>
-        /// <param name="OperName">用户姓名</param>
+        /// <param name="ID">修改用户对应的ID</param>
+        /// <param name="OperName">操作者姓名</param>
         /// <param name="AuthDegree">认证等级</param>
         /// <param name="LogInCount">登录次数</param>
         /// <param name="LoginAccount">登录账户</param>
-        /// <param name="LogInPassword"><登录密码/param>
+        /// <param name="LogInPassword">登录密码</param>
         /// <param name="Enable">是否启用</param>
-        /// <param name="type">范围1-6</param>
-        /// <returns>返回1为成功修改，0为修改失败，-100为异常</returns>
+        /// <param name="type">类型，从1-6选择</param>
+        /// <returns>返回1为成功修改，-100为异常</returns>
         public static int ChangeOperator(int ID,string OperName,int AuthDegree,int LogInCount,string LoginAccount,string LogInPassword,bool Enable,int type)
         {
             string ChangeStr = "";
@@ -216,6 +216,36 @@ namespace HotelDBA
             para[0].Value = ID;
 
             return SqlHelper.ExecuteNonQuery(sqlstr, para);
+        }
+
+        /// <summary>
+        /// 确认用户名密码是否匹配
+        /// </summary>
+        /// <param name="account">验证的帐号</param>
+        /// <param name="password">验证的密码</param>
+        /// <returns>返回true为正确，false为错误</returns>
+        public static bool VailPassword(string account,string password)
+        {
+            string sqlstr = "if exists (select * from OperatorList where LoginAccount =@acc and LogInPassword=@psw ) select '1' else select '0'";
+
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@acc",SqlDbType.VarChar),
+                new SqlParameter("@psw",SqlDbType.VarChar)
+            };
+            para[0].Value = account;
+            para[1].Value = password;
+
+            SqlDataReader reader = SqlHelper.ExecuteReader(sqlstr, para);
+
+            string output = "";
+
+            while(reader.Read())
+            {
+                output = reader[0].ToString();
+            }
+
+            return output == "0" ? false : true;
         }
     }
 }

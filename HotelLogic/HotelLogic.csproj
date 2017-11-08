@@ -39,8 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="LoginInfo.cs" />
+    <Compile Include="LoginManger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomManger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelDBA\HotelDBA.csproj">
+      <Project>{1c1599db-486b-43b2-b605-f3eef13b8636}</Project>
+      <Name>HotelDBA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelModels\HotelModels.csproj">
+      <Project>{ca7c6ea0-5c09-4d6c-bf34-82b09b45b606}</Project>
+      <Name>HotelModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

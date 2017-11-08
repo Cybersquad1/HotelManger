@@ -11,3 +11,7 @@ J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.exe
 J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.pdb
 J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelModels.dll
 J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelModels.pdb
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.LoginForm.resources
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelLogic.dll
+J:\homework\HotelManger\HotelManger\HotelManger\bin\Debug\HotelLogic.pdb
+J:\homework\HotelManger\HotelManger\HotelManger\obj\Debug\HotelManger.RoomForm.resources
