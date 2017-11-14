@@ -42,6 +42,7 @@
     <Compile Include="AuthPrivilege.cs" />
     <Compile Include="CheckInLog.cs" />
     <Compile Include="CustDegree.cs" />
+    <Compile Include="CustManageModel.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustStatus.cs" />
     <Compile Include="LogStatus.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="OperEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="RoomManageModel.cs" />
     <Compile Include="RoomStatus.cs" />
     <Compile Include="RoomType.cs" />
   </ItemGroup>

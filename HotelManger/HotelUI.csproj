@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustManageForm.Designer.cs">
+      <DependentUpon>CustManageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,15 @@
     <Compile Include="RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoomManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomManageForm.Designer.cs">
+      <DependentUpon>RoomManageForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustManageForm.resx">
+      <DependentUpon>CustManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomManageForm.resx">
+      <DependentUpon>RoomManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -16,5 +16,9 @@ namespace HotelModels
         /// 房间状态
         /// </summary>
         public string RoomStatusName { get; set; }
+        /// <summary>
+        /// 对应房间是否可删除
+        /// </summary>
+        public bool RoomDeleteAble { get; set; }
     }
 }

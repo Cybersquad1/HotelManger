@@ -23,7 +23,7 @@ namespace HotelDBA
         {
             List<RoomStatus> list = new List<RoomStatus>();
 
-            string sqlstr = "Select RoomStatusID,RoomStatusName from RoomStatus";
+            string sqlstr = "Select RoomStatusID,RoomStatusName,DeleteAble from RoomStatus";
             SqlDataReader reader = SqlHelper.ExecuteReader(sqlstr);
 
             while(reader.Read())
@@ -31,6 +31,7 @@ namespace HotelDBA
                 RoomStatus node = new RoomStatus();
                 node.RoomStatusID = Convert.ToInt32(reader[0]);
                 node.RoomStatusName = Convert.ToString(reader[1]);
+                node.RoomDeleteAble = Convert.ToInt32(reader[2]) == 1 ? true : false;
                 list.Add(node);
             }
 
@@ -60,7 +61,7 @@ namespace HotelDBA
                 FindStr = " = ";
             }
 
-            string sqlstr = "select RoomStatusID,RoomStatusName from RoomStatus where RoomStatusName" + FindStr + "@searchname";
+            string sqlstr = "select RoomStatusID,RoomStatusName,DeleteAble from RoomStatus where RoomStatusName" + FindStr + "@searchname";
 
             SqlParameter[] para = new SqlParameter[]
             {
@@ -83,6 +84,7 @@ namespace HotelDBA
                 RoomStatus node = new RoomStatus();
                 node.RoomStatusID = Convert.ToInt32(reader[0]);
                 node.RoomStatusName = Convert.ToString(reader[1]);
+                node.RoomDeleteAble = Convert.ToInt32(reader[2]) == 1 ? true : false;
                 list.Add(node);
             }
 
@@ -101,7 +103,7 @@ namespace HotelDBA
             RoomStatus node = new RoomStatus();
             node.RoomStatusID = -1;
 
-            string str = "select RoomstatusID,RoomStatusName from RoomStatus where RoomStatusID = @index";
+            string str = "select RoomstatusID,RoomStatusName,DeleteAble from RoomStatus where RoomStatusID = @index";
             SqlParameter[] para = new SqlParameter[]{
                 new SqlParameter("@index",SqlDbType.Int)
             };
@@ -113,6 +115,7 @@ namespace HotelDBA
             {
                 node.RoomStatusID = Convert.ToInt32(reader[0]);
                 node.RoomStatusName = Convert.ToString(reader[1]);
+                node.RoomDeleteAble = Convert.ToInt32(reader[2]) == 1 ? true : false;
             }
 
             reader.Close();
@@ -125,16 +128,18 @@ namespace HotelDBA
         /// </summary>
         /// <param name="statusname">新名称</param>
         /// <returns>返回1为插入成功，-1为出现重复拒绝插入，-100为异常</returns>
-        public static int AddNewStatus(string statusname)
+        public static int AddNewStatus(string statusname,bool deleteadle)
         {
             string sqlstr = "if not exists (select RoomStatusName from RoomStatus where RoomStatusName= @newname )" +
-                " insert into RoomStatus (RoomStatusName) VALUES (@newname)";
+                " insert into RoomStatus (RoomStatusName,DeleteAble) VALUES (@newname,@delete)";
             SqlParameter[] para=new SqlParameter[]
             {
-                new SqlParameter("@newname",SqlDbType.VarChar)
+                new SqlParameter("@newname",SqlDbType.VarChar),
+                new SqlParameter("@delete",SqlDbType.Int)
             };
 
             para[0].Value = statusname;
+            para[1].Value = deleteadle == true ? 1 : 0;
 
             return SqlHelper.ExecuteNonQuery(sqlstr, para);
         }
@@ -145,16 +150,33 @@ namespace HotelDBA
         /// <param name="newname">新的名称</param>
         /// <param name="StatusID">需要修改的类型对应的ID</param>
         /// <returns>返回1为修改成功，-100为异常</returns>
-        public static int ChangeStatusName(string newname,int StatusID)
+        public static int ChangeStatusName(string newname,bool deleteable,int StatusID,int type)
         {
-            string sqlstr = "update RoomStatus SET RoomStatusName = @name where RoomStatusID = @ID";
+            string namestr = "update RoomStatus SET RoomStatusName = @name where RoomStatusID = @ID";
+            string boolstr = "update RoomStatus SET DeleteAble = @name where RoomStatusID = @ID";
+            string sqlstr = "";
+            SqlParameter name = null;
+
+            switch(type)
+            {
+                case 1:
+                    name = new SqlParameter("@name", SqlDbType.VarChar);
+                    sqlstr = namestr;
+                    name.Value = newname;
+                    break;
+                case 2:
+                    name = new SqlParameter("@name", SqlDbType.Int);
+                    sqlstr = boolstr;
+                    name.Value = deleteable == true ? 1 : 0;
+                    break;
+            }
+            
+
             SqlParameter[] para=new SqlParameter[]
             {
-                new SqlParameter("@name",SqlDbType.VarChar),
+                name,
                 new SqlParameter("@ID",SqlDbType.Int)
             };
-
-            para[0].Value = newname;
             para[1].Value = StatusID;
 
             return SqlHelper.ExecuteNonQuery(sqlstr, para);

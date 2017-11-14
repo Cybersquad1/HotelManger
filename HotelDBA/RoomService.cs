@@ -134,7 +134,7 @@ namespace HotelDBA
         /// <param name="Description">房间描述</param>
         /// <param name="NumOfBeds">床的数量</param>
         /// <param name="NumOfCust">最大入住人数</param>
-        /// <returns></returns>
+        /// <returns>返回1为插入成功，-1为重复拒绝插入</returns>
         public static int AddNewRoom(string RoomNumber, int RoomTypeID, int RoomStatus, string Description, int NumOfBeds, int NumOfCust)
         {
             string sqlstr = "if not exists (select RoomNumber from Room where RoomNumber= @oldid) " +
