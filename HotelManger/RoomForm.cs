@@ -21,6 +21,7 @@ namespace HotelManger
         }
 
         List<Room> list = null;
+        BookRoom form = null;
 
         private void InitTreeView()
         {
@@ -35,34 +36,7 @@ namespace HotelManger
         private void Init(object sender, EventArgs e)
         {
             InitTreeView();
-            //RoomsList.OwnerDraw = true;
-            //RoomsList.DrawSubItem+=(RoomsList_DrawSubItem);
-            //RoomsList.DrawColumnHeader += (RoomsList_DrawColumnHeader);
         }
-
-        //private void RoomsList_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
-        //{
-        //    // This is the default text alignment
-        //    TextFormatFlags flags = TextFormatFlags.Left;
-
-        //    // Align text on the right for the subitems after row 11 in the 
-        //    // first column
-        //    if (e.ColumnIndex == 0 && e.Item.Index < 11)
-        //    {
-        //        flags = TextFormatFlags.HorizontalCenter;
-        //    }
-
-        //    e.DrawText(flags);
-        //}
-
-        //// Handle DrawColumnHeader event
-        //private void RoomsList_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
-        //{
-        //    // Draw the column header normally
-        //    e.DrawDefault = true;
-        //    e.DrawBackground();
-        //    e.DrawText();
-        //}
 
         private void RoomTypeList_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -74,7 +48,7 @@ namespace HotelManger
             {
                 ListViewItem lvi = new ListViewItem();
                 lvi.ImageIndex = 0;
-                lvi.Text = i.RoomNumber;
+                lvi.Text = i.RoomNumber.Trim();
                 lvi.Tag = i;
                 string output = "类型：" + RoomTypeService.GetRoomType(i.RoomTypeID).TypeName + "\r\n状态：" +
                     RoomStatusService.FindStatusByID(i.RoomStatus).RoomStatusName + "\r\n描述：" + i.Description + "\r\n床数：" +
@@ -85,6 +59,42 @@ namespace HotelManger
             }
 
             
+        }
+
+        private void RoomMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if(RoomsList.SelectedItems.Count!=1)
+            {
+                BookIn.Enabled = false;
+                return;
+            }
+            else
+            {
+                Room node = (Room)RoomsList.SelectedItems[0].Tag;
+
+                if(node.RoomStatus==5)
+                {
+                    BookIn.Enabled = true;
+                }
+                else
+                {
+                    BookIn.Enabled = false;
+                }
+            }
+        }
+
+        private void BookIn_Click(object sender, EventArgs e)
+        {
+            if(form==null||form.IsDisposed)
+            {
+                form = new BookRoom((Room)RoomsList.SelectedItems[0].Tag);
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("请完成当前房间的信息登记后再试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                form.Activate();
+            }
         }
     }
 }

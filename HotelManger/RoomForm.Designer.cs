@@ -33,6 +33,11 @@
             this.RoomTypeList = new System.Windows.Forms.TreeView();
             this.RoomsList = new System.Windows.Forms.ListView();
             this.RoomPics = new System.Windows.Forms.ImageList(this.components);
+            this.RoomMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BookIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReturnRoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.RoomMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // RoomTypeList
@@ -45,6 +50,7 @@
             // 
             // RoomsList
             // 
+            this.RoomsList.ContextMenuStrip = this.RoomMenu;
             this.RoomsList.LargeImageList = this.RoomPics;
             this.RoomsList.Location = new System.Drawing.Point(140, 12);
             this.RoomsList.Name = "RoomsList";
@@ -63,6 +69,38 @@
             this.RoomPics.Images.SetKeyName(3, "4.png");
             this.RoomPics.Images.SetKeyName(4, "5.png");
             // 
+            // RoomMenu
+            // 
+            this.RoomMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BookIn,
+            this.ReturnRoom,
+            this.ChangeStatus});
+            this.RoomMenu.Name = "RoomMenu";
+            this.RoomMenu.Size = new System.Drawing.Size(153, 92);
+            this.RoomMenu.Opening += new System.ComponentModel.CancelEventHandler(this.RoomMenu_Opening);
+            // 
+            // BookIn
+            // 
+            this.BookIn.Enabled = false;
+            this.BookIn.Name = "BookIn";
+            this.BookIn.Size = new System.Drawing.Size(152, 22);
+            this.BookIn.Text = "入住";
+            this.BookIn.Click += new System.EventHandler(this.BookIn_Click);
+            // 
+            // ReturnRoom
+            // 
+            this.ReturnRoom.Enabled = false;
+            this.ReturnRoom.Name = "ReturnRoom";
+            this.ReturnRoom.Size = new System.Drawing.Size(152, 22);
+            this.ReturnRoom.Text = "退房";
+            // 
+            // ChangeStatus
+            // 
+            this.ChangeStatus.Enabled = false;
+            this.ChangeStatus.Name = "ChangeStatus";
+            this.ChangeStatus.Size = new System.Drawing.Size(152, 22);
+            this.ChangeStatus.Text = "修改状态";
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -74,6 +112,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RoomForm";
             this.Load += new System.EventHandler(this.Init);
+            this.RoomMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +122,10 @@
         private System.Windows.Forms.TreeView RoomTypeList;
         private System.Windows.Forms.ListView RoomsList;
         private System.Windows.Forms.ImageList RoomPics;
+        private System.Windows.Forms.ContextMenuStrip RoomMenu;
+        private System.Windows.Forms.ToolStripMenuItem BookIn;
+        private System.Windows.Forms.ToolStripMenuItem ReturnRoom;
+        private System.Windows.Forms.ToolStripMenuItem ChangeStatus;
 
     }
 }

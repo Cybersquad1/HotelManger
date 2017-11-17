@@ -23,6 +23,16 @@ namespace HotelLogic
             return list;
         }
 
+        public static int GetRoomPrice(int typeid)
+        {
+            return RoomTypeService.GetRoomType(typeid).TypePrice;
+        }
+
+        public static string GetRoomTypeName(int typeid)
+        {
+            return RoomTypeService.GetRoomType(typeid).TypeName;
+        }
+
         public static List<string> GetRoomStatusList()
         {
             List<string> list = new List<string>();
@@ -147,5 +157,7 @@ namespace HotelLogic
 
             return RoomService.DeleteRoom(roomid);
         }
+
+        
     }
 }

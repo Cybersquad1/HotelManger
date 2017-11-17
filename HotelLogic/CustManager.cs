@@ -21,6 +21,19 @@ namespace HotelLogic
         }
 
         /// <summary>
+        /// 当身份证号码存在时验证姓名是否可以对应
+        /// </summary>
+        /// <param name="IDNumber"></param>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public static bool IsNameBelongToIDNumber(string IDNumber,string Name)
+        {
+            string name = CustomerService.FindCustomerListByCodeOrID(-1, IDNumber, 2).Name;
+
+            return name == Name;
+        }
+
+        /// <summary>
         /// 获取列表
         /// </summary>
         /// <returns></returns>
@@ -135,6 +148,64 @@ namespace HotelLogic
             int custid=GetCustIDByIDNumber(IDNumber);
 
             return CustomerService.DeleteCustomer(custid);
+        }
+
+        public static double GetDegreeDisCount(string idnumber)
+        {
+            int id = CustomerService.FindCustomerListByCodeOrID(-1, idnumber, 2).DrgreeID;
+
+            return CustDegreeService.FindCustDegreeByID(id).RoomDiscount;
+        }
+
+        public static bool IsFreeCash(string idnumber)
+        {
+            int id = CustomerService.FindCustomerListByCodeOrID(-1, idnumber, 2).DrgreeID;
+
+            return CustDegreeService.FindCustDegreeByID(id).PledgeCashDisCount == 1 ? false : true;
+        }
+
+        public static int ChangeStatus(string idnumber,int money,int LogIndex)
+        {
+            int id=GetCustIDByIDNumber(idnumber);
+            int totalmoney=CustomerService.FindCustomerListByCodeOrID(id,"",1).TotalMoney;
+            int Count=CustomerService.FindCustomerListByCodeOrID(id,"",1).CheckInCount;
+            string Logindex=CustomerService.FindCustomerListByCodeOrID(id,"",1).CheckInLogIndex;
+            Logindex+=LogIndex.ToString()+",";
+
+            return CustomerService.ChangeCustomer(id, "", "", -1, money + totalmoney, Count + 1, Logindex, 2, 7);
+        }
+
+        public static void CheckInChange(string idnumber, int LogIndex)
+        {
+            int id = GetCustIDByIDNumber(idnumber);
+            int Count = CustomerService.FindCustomerListByCodeOrID(id, "", 1).CheckInCount;
+            string Logindex = CustomerService.FindCustomerListByCodeOrID(id, "", 1).CheckInLogIndex;
+            Logindex += LogIndex.ToString() + ",";
+
+            CustomerService.ChangeCustomer(id, "", "", -1, -1, Count + 1, Logindex, 2, 6);
+            CustomerService.ChangeCustomer(id, "", "", -1, -1, Count + 1, Logindex, 2, 5);
+        }
+
+        public static void ChangeMoney(string idnumber,int money)
+        {
+            int id = GetCustIDByIDNumber(idnumber);
+            int totalmoney = CustomerService.FindCustomerListByCodeOrID(id, "", 1).TotalMoney;
+
+            CustomerService.ChangeCustomer(id, "", "", -1, totalmoney+money, -1, "", 2, 4);
+        }
+
+        public static bool IsFree(string idnumber)
+        {
+            int id = GetCustIDByIDNumber(idnumber);
+
+            if(CustomerService.FindCustomerListByCodeOrID(id,"",1).StatusID!=1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
